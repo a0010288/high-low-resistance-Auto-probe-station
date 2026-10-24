@@ -13,7 +13,7 @@ Equipment control software that fully automates the process from wafer loading, 
 - **Motion** : Multi-axis motion control with Ajin AXL and Ezi-SERVO, homing / coordinate systems / positioners
 - **Vision** : HIKROBOT camera with mark-matching–based XY/θ auto alignment
 - **Auto Measure** : Wafer-map–based positioning → probe contact → high/low resistance measurement
-- **Instrument** : VISA/GPIB instrument integration and raw measurement data management
+- **Instrument** : Keysight B1500A (SMU) and Keithley 2182A (nanovoltmeter) integration via VISA/GPIB, raw measurement data management
 - **Device** : Temperature controller, load cell, OCR (wafer ID), IO/interlock
 - **UI** : Control Hub, recipe management/lock, EMO recovery, real-time communication log
 
@@ -25,20 +25,21 @@ Equipment control software that fully automates the process from wafer loading, 
 ![measure](images/04_measure_result.png)
 
 ## Architecture
+```text
 UI (MainForm / ControlHub / EFEM / Wafer Map)
-│
+        │
 Sequence (Auto Run · Resume · Interlock)
-│
+        │
 Device Layer
-├─ Motion : Ajin / Ezi-SERVO / Positioner
-├─ Robot / LoadPort / Pre-Align
-├─ Vision (HIKROBOT)
-├─ Instrument (VISA / GPIB)
-└─ Temp / LoadCell / OCR / IO
-
+ ├─ Motion : Ajin / Ezi-SERVO / Positioner
+ ├─ Robot / LoadPort / Pre-Align
+ ├─ Vision (HIKROBOT)
+ ├─ Instrument : Keysight B1500A / Keithley 2182A (VISA / GPIB)
+ └─ Temp / LoadCell / OCR / IO
+```
 
 ## Tech Stack
-C#, WinForms, .NET Framework, OpenCvSharp, Ajin AXL, Ezi-SERVO, HIKROBOT MVS, VISA/GPIB, RS-232C/TCP
+C#, WinForms, .NET Framework, OpenCvSharp, Ajin AXL, Ezi-SERVO, HIKROBOT MVS, Keysight B1500A, Keithley 2182A, VISA/GPIB, RS-232C/TCP
 
 ## Role
 - Period : 2025.10 – 2026.01
